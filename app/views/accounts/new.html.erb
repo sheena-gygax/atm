@@ -1,0 +1,8 @@
+<% provide(:title, 'New Account') %>
+<div class='container jumbotron new-account'>
+  <h1>New Account</h1>
+    
+  <%= form_for [@customer, @account] do |f| %>
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  <% end %>
+</div>

@@ -6,11 +6,49 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' type='text/css'>
+    <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css' type='text/css'>
+    
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'>
+    <link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'>
   </head>
 
   <body>
-    <%= yield %>
+    <nav class ='navbar navbar-expand-lg navbar-dark bg-dark'>
+      <div class='container'>
+        <a class='navbar-brand' href="/">ATM</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id='navbar' class='collapse navbar-collapse'>
+          <ul class='navbar-nav mr-sm-2 mt-2 mt-lg-0'>
+            <% if current_customer.present? %>
+              <li class='nav-item'>
+                <%= link_to 'Accounts', customer_accounts_path(current_customer), class: 'nav-link' %>
+              </li>
+              <li class='nav-item'>
+                <%= link_to 'Log Out', logout_path, method: :delete, class: 'nav-link' %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class='container'>
+
+      <% if flash[:error] %> 
+        <p class='error'><%=h flash[:error] %>
+      <% end %>
+      <% if flash[:notice] %> 
+        <p class='notice'><%=h flash[:notice] %>
+      <% end %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>

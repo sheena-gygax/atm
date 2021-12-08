@@ -1,0 +1,38 @@
+<section class="jumbotron">
+  <div class="row justify-content-end"> 
+    <%= button_tag :new_transaction, id: 'btn-transaction', class: 'btn btn-secondary float-right' do %>
+      New Transaction
+    <% end %>
+  </div>
+
+  <div class='row'>
+    <h4>Account Number # <%= @account.account_number %></h4>
+
+    <table class='table'>
+      <thead>
+        <tr>
+          <th scope='col'>Date</th>
+          <th scope='col'>Transaction Type</th>
+          <th scope='col'>Amount</th>
+        <tr>
+      </thead>
+      <tbody>
+        <% @account.transactions.each do |transaction| %>
+        <tr>
+          <td><%= transaction.created_at.strftime("%B %e, %Y at %I:%M %p") %>
+          <td><%= transaction.transaction_type %></td>
+          <td><%= number_to_currency(transaction.amount) %></td>
+        </tr>
+        <% end %>
+        <tr>
+          <th>Total Balance</th>
+          <th></th>
+          <th><%= number_to_currency(@account.balance) %></th>
+        </tr>
+      </tbody
+    </table>
+  </div>
+</section>
+
+<div id='account-data' data-account-id=<%= @account.id %></div>
+<%= render template: 'transactions/new' %>

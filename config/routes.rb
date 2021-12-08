@@ -1,3 +1,17 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'sessions#new'
+
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+
+  resources :customers do
+    resources :accounts, only: [:new, :create, :show, :index]
+  end
+
+  namespace :api do
+    namespace :v1 do
+      post 'accounts/new_transaction', to: 'accounts#new_transaction'
+    end
+  end
 end
