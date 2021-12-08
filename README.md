@@ -1,24 +1,35 @@
-# README
+# ATM
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Local Setup
 
-Things you may want to cover:
+## Prerequisites
 
-* Ruby version
+| Description | Version |
+|-----------|---------------|
+|Ruby|2.7.2|
+|Mysql|latest|
 
-* System dependencies
+### Backend
+```
+bundle
+rake db:create
+rake db:migrate
+rake db:migrate RAILS_ENV=test
+```
 
-* Configuration
+### Frontend
+```
+npm install
+```
 
-* Database creation
+## Run dev servers
 
-* Database initialization
+### Rails server
+```
+bundle exec rails s
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Running Tests
+```
+For the rails tests run `rspec`
+```
