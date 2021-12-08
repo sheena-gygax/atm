@@ -7,12 +7,12 @@ import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-var jQuery = require('jquery')
-global.$ = global.jQuery = jQuery;
-window.$ = window.jQuery = jQuery;
+import JQuery from 'jquery';
+window.$ = window.JQuery = JQuery;
 
 import 'bootstrap/dist/js/bootstrap'
 import 'bootstrap/dist/css/bootstrap'
+require('styles/main.css');
 
 require("main")
 

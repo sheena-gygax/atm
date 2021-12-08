@@ -9,7 +9,6 @@ $(window).on("load", function(){
   var $account_data = $('#account-data');
 
   $buttonTransaction.on('click', function () {
-    alert('hi')
     $modal.modal('show');
   })
 

@@ -1,11 +1,14 @@
 <section class="jumbotron">
-  <div class="row justify-content-end"> 
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end"> 
     <%= link_to 'New Account', new_customer_account_path(@customer), class: 'btn btn-secondary float-right' %>
   </div>
+
   <div class='row'>
     <p>Welcome, <%= current_customer.first_name %> <%= current_customer.last_name %></p>
   </div>
+
   <h4>Accounts</h4>
+
   <table class='table'>
     <thead>
       <tr>

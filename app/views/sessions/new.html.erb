@@ -1,34 +1,35 @@
 <% provide(:title, 'Login') %>
-<div class='container jumbotron'>
-  <div class='row justify-content-center'>
+<main class='form-signin'>
+  <form>
+  <div class='form-floating"'>
     <h1>Welcome</h1>
   </div>
 
-  <div class='row justify-content-center'>
+  <div class='form-floating"'>
     <p>Enter four digit PIN number to get started</p>
   </div>
 
-   <%= form_for(:session, url: login_path) do |f| %>
-      <div class='row justify-content-center'>
-        <div class='col-1.5'>
+   <%= form_for(:session, url: login_path, authenticity_token: false) do |f| %>
+      <div class='form-floating"'>
+        <div class='col'>
          <%= f.label :pin_number, 'Pin Number:' %>
         </div>
 
-        <div class='col-3'>
+        <div class='col'>
           <%= f.password_field :pin_number, class: 'form-control' %>
         </div>
       </div>
 
-      <div class='row justify-content-center p-3'>
-        <%= f.submit "Log in", class: "btn btn-primary" %>
+      <div class='form-floating"'>
+        <%= f.submit "Log in", class: "btn btn-primary mt-3" %>
       </div>
     <% end %>
     
-      <div class='row'>
-        <div class='col-lg'>
+      <div class='form-floating"'>
+        <div class='col-lg mt-3'>
           <p>New customer? <%= link_to "Sign up", new_customer_path %></p>
         </div>
       </div>
     </div>
   </div>
-</div>
+</main>

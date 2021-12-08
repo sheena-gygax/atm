@@ -3,38 +3,36 @@
     <div class='modal-content'>
       <div class='modal-header'>
         <h5 class='modal-title'>Add Transaction</h5>
-        <button type='button' class='btn-close icon-remove' data-bs-dismiss='modal' aria-label='Close'></button>
+        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
       </div>
       <div class='modal-body'>
         <div class='row'>
           <div class='col'>
-            <%# if @errors.present? %>
-              <div class='alert alert-danger' style='display: none;'>
-                <%= @errors %>
-              </div>
-            <%# end %>
+            <div class='alert alert-danger' style='display: none;'>
+              <%= @errors %>
+            </div>
           </div>
         </div>
-        <div class='row'>
-          <div class='col-md-8'>
-            <%= label_tag 'transaction_type' %>
+        <div class='row g-3'>
+          <div class='col-md-6'>
+            <%= label_tag 'transaction_type', nil, class: 'form-label' %>
             <%= select_tag 'transaction_type', 
                 options_for_select(
                   Transaction::TRANSACTION_TYPES, 
                   selected: Transaction::TRANSACTION_TYPES.first,
                   ), 
                 id: 'transaction-type', 
-                class: 'btn btn-secondary dropdown-toggle' 
+                class: 'btn btn-secondary dropdown-toggle form-control' 
             %>
           </div>
           <div class='col-md-8'>
-            <%= label_tag 'amount' %>
-            <%= text_field_tag 'amount', params[:amount], id: 'transaction-amount' %>
+            <%= label_tag 'amount', nil, class: 'form-label' %>
+            <%= text_field_tag 'amount', params[:amount], id: 'transaction-amount', class: 'form-control' %>
           </div>
         </div>
       </div>
       <div class='modal-footer'>
-        <button type='button' class='btn btn-secondary btn-close' data-bs-dismiss='modal'>Close</button>
+        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
         <button type='button' id='btn-submit' class='btn btn-primary'>Save</button>
       </div>
     </div>
